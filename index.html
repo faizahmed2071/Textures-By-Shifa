@@ -190,21 +190,13 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-1 gap-12 items-start">
-      
-      <!-- Left: Preview Image 
-      <div>
-        <img src="https://source.unsplash.com/600x600/?custom,art" alt="Custom Art Preview"
-             class="w-full rounded-2xl shadow-lg object-cover">
-      </div> -->
-
-      <!-- Right: Form Area -->
       <div class="bg-white p-6 rounded-xl shadow-md w-full">
         <form id="customForm" class="space-y-6">
           
           <!-- Canvas Size -->
           <div>
             <label class="block mb-1 text-gray-700 font-medium">Canvas Size</label>
-            <select class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400">
+            <select id="canvasSize" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400">
               <option value="8x10">8 x 10 in</option>
               <option value="12x16">12 x 16 in</option>
               <option value="16x20">16 x 20 in</option>
@@ -222,6 +214,8 @@
     <!-- Painting -->
     <!-- Painting with Closeable Tooltip -->
 <div class="relative">
+  <input type="hidden" name="artType" id="artTypeInput" />
+
   <button type="button"
           class="art-btn border border-pink-500 text-pink-500 rounded-lg py-2 w-full flex items-center justify-between px-4 transition"
           data-art="Painting"
@@ -350,7 +344,7 @@
 
     <!-- Color Name -->
     <input type="text" placeholder="Color name (e.g. Sky Blue)"
-           class="border p-2 rounded-lg w-full border-gray-300">
+           id="colorName" class="border p-2 rounded-lg w-full border-gray-300">
   </div>
 </div>
 
@@ -358,32 +352,192 @@
           <div id="contentField" class="hidden">
             <label class="block mb-1 text-gray-700 font-medium mt-4">Text on Painting</label>
             <input type="text" placeholder="Enter text to be written on the painting"
-                   class="w-full border border-gray-300 p-2 rounded-lg">
+                   id="textOnPainting" class="w-full border border-gray-300 p-2 rounded-lg">
           </div>
 
           <!-- Painting Idea Text Area -->
           <div>
             <label class="block mb-1 text-gray-700 font-medium">Describe Your Idea</label>
-            <textarea rows="4" placeholder="Describe how you want the painting to be..."
+            <textarea id="idea" rows="4" placeholder="Describe how you want the painting to be..."
                       class="w-full border border-gray-300 p-2 rounded-lg resize-none"></textarea>
           </div>
 
+          <!-- Contact Details Heading -->
+          <div class="mb-6">
+            <h3 class="text-2xl font-semibold text-gray-800">Contact Details</h3>
+            <p class="text-gray-600 mt-1 text-sm">Let us know how to get in touch with you regarding your custom artwork.</p>
+          </div>
+
+
+          <!-- Customer Details -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Name -->
+              <div>
+                <label for="customerName" class="block mb-1 text-gray-700 font-medium">Your Name</label>
+                <input type="text" id="customerName" name="customerName" placeholder="Enter your name"
+                      class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400" required>
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="customerEmail" class="block mb-1 text-gray-700 font-medium">Email Address</label>
+                <input type="email" id="customerEmail" name="customerEmail" placeholder="Enter your email"
+                      class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400" required>
+              </div>
+
+              <!-- Phone -->
+              <div class="md:col-span-2">
+                <label for="customerPhone" class="block mb-1 text-gray-700 font-medium">Phone Number</label>
+                <input type="tel" id="customerPhone" name="customerPhone" placeholder="e.g. +91 9876543210"
+                      class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400">
+              </div>
+            </div>
+
+
           <!-- CTA -->
-          <button type="submit"
+          <button type="submit" 
                   class="w-full bg-pink-500 text-white py-3 rounded-lg text-lg hover:bg-pink-600 transition">
-            Proceed to Customize
+            Place Order
           </button>
         </form>
       </div>
     </div>
   </div>
+
+  <!-- Preview Modal -->
+<div id="previewModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-xl p-6 max-w-xl w-full shadow-xl relative">
+    
+    <h3 class="text-2xl font-bold text-gray-800 mb-4">Preview Your Order</h3>
+    
+    <div class="space-y-2 text-gray-700 text-sm" id="previewContent">
+      <!-- JS will populate preview here -->
+    </div>
+
+    <div class="mt-6 flex justify-end gap-4">
+      <button onclick="closePreview()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 text-sm">Edit Details</button>
+      <button onclick="submitConfirmed()" class="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 text-sm">Confirm & Submit</button>
+    </div>
+  </div>
+</div>
+<!-- ✅ Success Modal -->
+<div id="successModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden transition-all duration-300 scale-95 opacity-0">
+  <div class="bg-white rounded-2xl p-6 text-center shadow-xl w-80 transform transition-all duration-500 scale-95 opacity-0 animate-fade-in">
+    <div class="text-green-500 text-5xl mb-2 animate-bounce">✅</div>
+    <h2 class="text-xl font-semibold mb-2">Order Placed!</h2>
+    <p class="text-gray-600 mb-4">We’ve received your custom order and will contact you shortly.</p>
+    <button onclick="closeSuccessModal()"
+      class="mt-2 bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition">
+      Close
+    </button>
+  </div>
+</div>
+
+
 </section>
+<script>
 
 
+function showSuccessModal() {
+  const modal = document.getElementById("successModal");
+  modal.classList.remove("hidden");
+
+  // Animate modal in using opacity/scale
+  const box = modal.querySelector("div");
+  box.classList.remove("scale-95", "opacity-0");
+  box.classList.add("scale-100", "opacity-100");
+}
+
+function closeSuccessModal() {
+  const modal = document.getElementById("successModal");
+  const box = modal.querySelector("div");
+
+  // Animate modal out using opacity/scale
+  box.classList.add("scale-95", "opacity-0");
+  box.classList.remove("scale-100", "opacity-100");
+
+  // Delay hiding to allow animation to complete
+  setTimeout(() => {
+    modal.classList.add("hidden");
+  }, 3000); // matches duration-300
+}
 
 
+    let selectedArt = ""; // Global variable for art type
 
-  <script>
+  function selectArt(type) {
+    selectedArt = type;
+
+    // Highlight selected button
+    document.querySelectorAll(".art-btn").forEach(btn => {
+      btn.classList.remove("bg-pink-500", "text-white");
+      btn.classList.add("text-pink-500", "bg-white");
+    });
+
+    const selectedBtn = [...document.querySelectorAll(".art-btn")].find(btn => btn.dataset.art === type);
+    if (selectedBtn) {
+      selectedBtn.classList.add("bg-pink-500", "text-white");
+    }
+
+    // Toggle "text on painting" field
+    const contentField = document.getElementById("contentField");
+    if (type === "Painting" || type === "Textured + Painting") {
+      contentField.classList.remove("hidden");
+    } else {
+      contentField.classList.add("hidden");
+    }
+  }
+
+  // Form Submission
+  document.getElementById("customForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const canvasSize = document.getElementById("canvasSize").value;
+    const colorHex = document.getElementById("colorPicker").value;
+    const rgbCode = document.getElementById("rgbOutput").value;
+    const colorName = document.getElementById("colorName").value;
+    const artType = document.getElementById("artTypeInput").value;
+    const textOnPainting = document.getElementById("textOnPainting").value;
+    const idea = document.getElementById("idea").value;
+    const customerName = document.getElementById("customerName").value;
+    const customerEmail = document.getElementById("customerEmail").value;
+    const customerPhone = document.getElementById("customerPhone").value;
+
+    const data = {
+      canvasSize,
+      artType,
+      color: {
+        name: colorName,
+        hex: colorHex,
+        rgb: rgbCode
+      },
+      textOnPainting,
+      idea,
+      customerName,
+      customerEmail,
+      customerPhone
+    };
+
+    try {
+      const res = await fetch("http://localhost:5000/api/order/custom", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        showSuccessModal();
+        document.getElementById("customForm").reset();
+      } else {
+        alert("❌ Submission failed: " + result.message);
+      }
+    } catch (err) {
+      console.error("Submission error:", err.message || err);
+      alert("⚠️ Something went wrong. Try again.");
+    }
+  });
+
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => {
@@ -408,7 +562,7 @@
   setInterval(() => {
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
-  }, 5000);
+  }, 3000);
 
 
     function toggleInfo(id) {
@@ -425,17 +579,33 @@
   }
 
   function selectArt(selectedType) {
-    const buttons = document.querySelectorAll(".art-btn");
-    buttons.forEach(btn => {
-      const isSelected = btn.getAttribute("data-art") === selectedType;
-      btn.classList.toggle("bg-pink-500", isSelected);
-      btn.classList.toggle("text-white", isSelected);
-      btn.classList.toggle("text-pink-500", !isSelected);
-    });
+  // Set hidden input field value
+  document.getElementById("artTypeInput").value = selectedType;
 
-    const showField = ["Painting", "Textured + Painting"].includes(selectedType);
-    document.getElementById("contentField").classList.toggle("hidden", !showField);
+  // Highlight selected button and reset others
+  const buttons = document.querySelectorAll(".art-btn");
+  buttons.forEach(btn => {
+    const isSelected = btn.getAttribute("data-art") === selectedType;
+    btn.classList.toggle("bg-pink-500", isSelected);
+    btn.classList.toggle("text-white", isSelected);
+    btn.classList.toggle("text-pink-500", !isSelected);
+
+    // Also reset any inner span (ℹ️) if needed
+    const infoIcon = btn.querySelector("span");
+    if (infoIcon) {
+      infoIcon.classList.toggle("text-white", isSelected);
+      infoIcon.classList.toggle("text-gray-400", !isSelected);
+    }
+  });
+
+  // Show/hide the "idea/content" field
+  const showField = ["Painting", "Textured + Painting"].includes(selectedType);
+  const contentField = document.getElementById("contentField");
+  if (contentField) {
+    contentField.classList.toggle("hidden", !showField);
   }
+}
+
   
   const colorPicker = document.getElementById("colorPicker");
   const rgbOutput = document.getElementById("rgbOutput");
@@ -453,6 +623,69 @@
     const b = parseInt(hex.slice(5, 7), 16);
     return `rgb(${r}, ${g}, ${b})`;
   }
+
+  const form = document.getElementById('customForm');
+  const previewModal = document.getElementById('previewModal');
+  const previewContent = document.getElementById('previewContent');
+  let formDataCache = {};
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Stop normal form submit
+
+    const canvasSize = document.getElementById('canvasSize').value;
+    const artType = document.getElementById('artTypeInput').value;
+    const colorName = document.getElementById('colorName').value;
+    const rgbCode = document.getElementById('rgbOutput').value;
+    const colorHex = document.getElementById('colorPicker').value;
+    const textOnPainting = document.getElementById('textOnPainting')?.value || '';
+    const idea = document.getElementById('idea').value;
+    const customerName = document.getElementById('customerName').value;
+    const customerEmail = document.getElementById('customerEmail').value;
+    const customerPhone = document.getElementById('customerPhone').value;
+
+    formDataCache = {
+      canvasSize,
+      artType,
+      colorName,
+      rgbCode,
+      colorHex,
+      textOnPainting,
+      idea,
+      customerName,
+      customerEmail,
+      customerPhone
+    };
+
+    // Populate preview
+    previewContent.innerHTML = `
+      <p><strong>Canvas Size:</strong> ${canvasSize}</p>
+      <p><strong>Art Type:</strong> ${artType}</p>
+      <p><strong>Color:</strong> ${colorName} – ${colorHex} – ${rgbCode}</p>
+      ${textOnPainting ? `<p><strong>Text on Painting:</strong> ${textOnPainting}</p>` : ''}
+      <p><strong>Idea:</strong> ${idea}</p>
+      <hr class="my-2">
+      <p><strong>Name:</strong> ${customerName}</p>
+      <p><strong>Email:</strong> ${customerEmail}</p>
+      <p><strong>Phone:</strong> ${customerPhone}</p>
+    `;
+
+    previewModal.classList.remove('hidden');
+  });
+
+  function closePreview() {
+    previewModal.classList.add('hidden');
+  }
+
+  function submitConfirmed() {
+    const form = document.getElementById('customForm');
+    // Hide modal and submit form
+    previewModal.classList.add('hidden');
+    form.submit(); // Now submit form for real
+    showSuccessModal(); 
+  }
+
+
+
   </script>
 
 </body>
