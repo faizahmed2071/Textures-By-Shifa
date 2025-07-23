@@ -8,70 +8,7 @@
 </head>
 <body class="bg-white">
 
-  <!-- Navbar -->
-  <header class="w-full fixed top-0 bg-white shadow-md z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        
-        <!-- Logo -->
-        <div class="flex-shrink-0 text-2xl font-bold text-gray-800">
-          Textures By Shifa
-        </div>
-
-        <!-- Desktop Nav Links -->
-        <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
-          <a href="#" class="hover:text-black">Home</a>
-          <a href="#shop" class="hover:text-black">Shop</a>
-          <a href="#customize" class="hover:text-black">Customize</a>
-          <a href="#about" class="hover:text-black">About</a>
-          <a href="#reviews" class="hover:text-black">Reviews</a>
-          <a href="#contact" class="hover:text-black">Contact</a>
-        </nav>
-
-        <!-- Right Icons -->
-        <div class="hidden md:flex items-center space-x-4">
-          <!-- Cart Icon -->
-          <button class="relative">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 3h13m-9 0a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
-            </svg>
-            <span class="absolute -top-1 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">2</span>
-          </button>
-
-          <!-- Search Icon -->
-          <button>
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden flex items-center">
-          <button id="mobile-menu-btn" class="focus:outline-none">
-            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
-                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile Drawer Menu -->
-    <div id="mobile-menu" class="md:hidden hidden px-4 pt-4 pb-6 space-y-4 bg-white shadow-lg">
-      <a href="#" class="block text-gray-700 hover:text-black">Home</a>
-      <a href="#shop" class="block text-gray-700 hover:text-black">Shop</a>
-      <a href="#customize" class="block text-gray-700 hover:text-black">Customize</a>
-      <a href="#about" class="block text-gray-700 hover:text-black">About</a>
-      <a href="#reviews" class="block text-gray-700 hover:text-black">Reviews</a>
-      <a href="#contact" class="block text-gray-700 hover:text-black">Contact</a>
-    </div>
-  </header>
-  
+  <div id="header-placeholder"></div>
   
   <!-- Hero Section with Split Layout -->
 <section class="bg-gray-100 w-full py-12 sm:py-20" id="home">
@@ -432,11 +369,22 @@
     </button>
   </div>
 </div>
-
-
 </section>
-<script>
 
+<div id="footer-placeholder"></div>
+
+<script>
+  // Load Header
+  fetch('/header.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("header-placeholder").innerHTML = data;
+    });
+fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    });
 
 function showSuccessModal() {
   const modal = document.getElementById("successModal");
@@ -446,6 +394,10 @@ function showSuccessModal() {
   const box = modal.querySelector("div");
   box.classList.remove("scale-95", "opacity-0");
   box.classList.add("scale-100", "opacity-100");
+
+  // Ensure modal is fully visible
+  modal.classList.add("opacity-100");
+  modal.classList.remove("opacity-0");
 }
 
 function closeSuccessModal() {
@@ -459,7 +411,9 @@ function closeSuccessModal() {
   // Delay hiding to allow animation to complete
   setTimeout(() => {
     modal.classList.add("hidden");
-  }, 3000); // matches duration-300
+    modal.classList.remove("opacity-100");
+    modal.classList.add("opacity-0");
+  }, 300); // matches duration-300
 }
 
 
@@ -527,7 +481,7 @@ function closeSuccessModal() {
 
       const result = await res.json();
       if (res.ok) {
-        showSuccessModal();
+        
         document.getElementById("customForm").reset();
       } else {
         alert("❌ Submission failed: " + result.message);
@@ -676,12 +630,61 @@ function closeSuccessModal() {
     previewModal.classList.add('hidden');
   }
 
+  let isSubmitting = false;
+
   function submitConfirmed() {
-    const form = document.getElementById('customForm');
-    // Hide modal and submit form
-    previewModal.classList.add('hidden');
-    form.submit(); // Now submit form for real
-    showSuccessModal(); 
+    if (isSubmitting) return; // Prevent double submit
+    isSubmitting = true;
+
+    // Disable the button and show loading spinner
+    const confirmBtn = document.querySelector('#previewModal button.bg-pink-500');
+    confirmBtn.disabled = true;
+    confirmBtn.innerHTML = `<svg class="animate-spin h-5 w-5 mr-2 inline-block text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path></svg>Submitting...`;
+
+    // Gather form data from formDataCache (already populated in preview)
+    const data = {
+      canvasSize: formDataCache.canvasSize,
+      artType: formDataCache.artType,
+      color: {
+        name: formDataCache.colorName,
+        hex: formDataCache.colorHex,
+        rgb: formDataCache.rgbCode
+      },
+      textOnPainting: formDataCache.textOnPainting,
+      idea: formDataCache.idea,
+      customerName: formDataCache.customerName,
+      customerEmail: formDataCache.customerEmail,
+      customerPhone: formDataCache.customerPhone,
+      confirmed: true
+    };
+
+    fetch("http://localhost:5000/api/order/custom", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(result => {
+      isSubmitting = false;
+      confirmBtn.disabled = false;
+      confirmBtn.innerHTML = "Confirm & Submit";
+      if (result && result.message && !result.preview) {
+        closePreview();
+        setTimeout(() => {
+          showSuccessModal();
+        }, 350); // Wait for preview modal to close/animate
+        document.getElementById("customForm").reset();
+      } else {
+        alert("❌ Submission failed: " + (result.message || "Unknown error"));
+      }
+    })
+    .catch(err => {
+      isSubmitting = false;
+      confirmBtn.disabled = false;
+      confirmBtn.innerHTML = "Confirm & Submit";
+      alert("⚠️ Something went wrong. Try again.");
+      console.error(err);
+    });
   }
 
 
