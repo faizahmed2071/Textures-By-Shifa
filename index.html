@@ -20,7 +20,7 @@
 
         <!-- Desktop Nav Links -->
         <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
-          <a href="#" class="hover:text-black">Home</a>
+          <a href="index.html" class="hover:text-black">Home</a>
           <a href="#shop" class="hover:text-black">Shop</a>
           <a href="#customize" class="hover:text-black">Customize</a>
           <a href="#about" class="hover:text-black">About</a>
@@ -63,7 +63,7 @@
 
     <!-- Mobile Drawer Menu -->
     <div id="mobile-menu" class="md:hidden hidden px-4 pt-4 pb-6 space-y-4 bg-white shadow-lg">
-      <a href="#" class="block text-gray-700 hover:text-black">Home</a>
+      <a href="index.html" class="block text-gray-700 hover:text-black">Home</a>
       <a href="#shop" class="block text-gray-700 hover:text-black">Shop</a>
       <a href="#customize" class="block text-gray-700 hover:text-black">Customize</a>
       <a href="#about" class="block text-gray-700 hover:text-black">About</a>
@@ -127,7 +127,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
       <!-- Category 1 -->
-      <a href="#shop" class="group bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+      <a href="painting.html" target="_blank" class="group bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
         <div class="aspect-w-1 aspect-h-1">
           <img src="resources/painting.jpg" alt="Paintings"
                class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300">
@@ -139,13 +139,13 @@
       </a>
 
       <!-- Category 2 -->
-      <a href="#shop" class="group bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+      <a href="textured-art.html" target="_blank" class="group bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
         <div class="aspect-w-1 aspect-h-1">
           <img src="resources/textured painting.jpg" alt="Texture Art"
                class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300">
         </div>
         <div class="p-4 text-center">
-          <h3 class="text-xl font-semibold text-gray-800">Texture Art</h3>
+          <h3 class="text-xl font-semibold text-gray-800">Textured Art</h3>
           <p class="text-gray-500 mt-1 text-sm">Rich and tactile textures</p>
         </div>
       </a>
@@ -449,7 +449,7 @@
     <div>
       <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
       <ul class="space-y-2 text-sm">
-        <li><a href="#" class="hover:text-white">Home</a></li>
+        <li><a href="index.html" class="hover:text-white">Home</a></li>
         <li><a href="#shop" class="hover:text-white">Shop</a></li>
         <li><a href="#customize" class="hover:text-white">Customize</a></li>
         <li><a href="#about" class="hover:text-white">About</a></li>
@@ -599,7 +599,7 @@ function closeSuccessModal() {
       mobileMenu.classList.toggle('hidden');
     });
 
-     const slides = document.querySelectorAll(".carousel-image");
+  const slides = document.querySelectorAll(".carousel-image");
   let currentSlide = 0;
 
   function showSlide(index) {
@@ -787,6 +787,9 @@ function closeSuccessModal() {
       console.error(err);
     });
   }
+
+
+
   </script>
 
 </body>
