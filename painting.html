@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+      <script src="https://cdn.tailwindcss.com"></script>
+      
+      
+    <title>Painting | Textures By Shifa</title>
+</head>
+<body>
+    <!-- Navbar -->
+  <header class="w-full fixed top-0 bg-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        
+        <!-- Logo -->
+        <div class="flex-shrink-0 text-2xl font-bold text-gray-800">
+          Textures By Shifa
+        </div>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
+          <a href="index.html" class="hover:text-black">Home</a>
+          <a href="#shop" class="hover:text-black">Shop</a>
+          <a href="#customize" class="hover:text-black">Customize</a>
+          <a href="#about" class="hover:text-black">About</a>
+          <a href="#reviews" class="hover:text-black">Reviews</a>
+          <a href="#contact" class="hover:text-black">Contact</a>
+        </nav>
+
+        <!-- Right Icons -->
+        <div class="hidden md:flex items-center space-x-4">
+          <!-- Cart Icon -->
+          <button class="relative">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 3h13m-9 0a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
+            </svg>
+            <span class="absolute -top-1 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">2</span>
+          </button>
+
+          <!-- Search Icon -->
+          <button>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="focus:outline-none">
+            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
+                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pt-4 pb-6 space-y-4 bg-white shadow-lg">
+      <a href="index.html" class="block text-gray-700 hover:text-black">Home</a>
+      <a href="#shop" class="block text-gray-700 hover:text-black">Shop</a>
+      <a href="#customize" class="block text-gray-700 hover:text-black">Customize</a>
+      <a href="#about" class="block text-gray-700 hover:text-black">About</a>
+      <a href="#reviews" class="block text-gray-700 hover:text-black">Reviews</a>
+      <a href="#contact" class="block text-gray-700 hover:text-black">Contact</a>
+    </div>
+  </header>
+
+ <section class="bg-gray-100 w-full py-12 sm:py-20" id="home">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center gap-12">
+    
+    <!-- Left Content -->
+    <div class="text-center md:text-left md:w-1/2">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 leading-tight">
+        Painting<br />
+        <span class="text-pink-500">Art Collection</span>
+      </h1>
+      <p class="mt-4 text-gray-600 text-lg">
+        Discover beautifully hand-crafted paintings ready to enhance your space — just pick and order.      </p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a href="#shop" class="px-6 py-3 bg-pink-500 text-white rounded-xl hover:bg-pink-600 text-lg transition">
+          Explore Gallery
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Slideshow -->
+    <div class="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden rounded-2xl shadow-lg" style="margin-top: 36px;">
+      <div id="carouselSlides" class="w-full h-full relative">
+        <!-- Slide 1 -->
+        <img src="resources/carousel1.jpg"
+             class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" />
+        <!-- Slide 2 -->
+        <img src="resources/painting/painting-2.jpg"
+             class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" />
+        <!-- Slide 3 -->
+        <img src="resources/painting/painting-3.jpg"
+             class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-10">Explore the Collection</h2>
+    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      
+        <!-- Artwork Card -->
+        <div class="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition duration-300">
+            <div class="overflow-hidden">
+                <img src="resources/painting/painting-1.jpg" alt="Art 1" class="w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800">Serenity in Blue</h3>
+                <p class="text-pink-600 font-bold mt-1">₹3,499</p>
+                <!-- Buy Now Button (inside card) -->
+                <button onclick="openModal('Serenity in Blue', '₹3,499', 'resources/painting/painting-1.jpg', 'resources/painting/painting-1-p-1.jpg', 'resources/painting/painting-1-p-2.jpg', 'resources/painting/painting-1-p-3.jpg')" 
+                        class="mt-4 w-full bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-600 transition">
+                        Buy Now
+                </button>
+
+                <!-- Modal Overlay -->
+                <div id="artModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+                    <div class="bg-white rounded-2xl shadow-lg w-[90%] sm:w-[500px] p-6 relative modal-scroll-769">
+                        <!-- Close Button -->
+                        <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black text-xl">&times;</button>
+
+                            <!-- Image -->
+                        <!-- Carousel inside modal -->
+                        <div class="relative w-full h-64 overflow-hidden rounded-xl mb-4">
+                            <div id="modalCarousel" class="w-full h-full relative">
+                                <img id="carouselImg1" src="resources/painting/painting-1.jpg" class="carousel-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-100" />
+                                <img id="carouselImg2" src="resources/painting/painting-1-p-1.jpg" class="carousel-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" />
+                                <img id="carouselImg3" src="resources/painting/painting-1-p-2.jpg" class="carousel-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" />
+                                <img id="carouselImg4" src="resources/painting/painting-1-p-3.jpg" class="carousel-slide absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" />
+                            </div>
+
+                            <!-- Prev/Next Buttons -->
+                            <button onclick="prevSlide()" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 p-1 rounded-full shadow hover:bg-opacity-100">
+                                ‹
+                            </button>
+                            <button onclick="nextSlide()" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 p-1 rounded-full shadow hover:bg-opacity-100">
+                                ›
+                            </button>
+                        </div>
+
+                        <!-- Title & Price -->
+                        <h2 id="modalTitle" class="text-2xl font-bold text-gray-800"></h2>
+                        <p id="modalPrice" class="text-pink-600 font-semibold mb-4"></p>
+
+                        <!-- Short Description -->
+                        <p class="text-gray-600 text-sm mb-4">
+                        This is a beautifully crafted artwork perfect for your space. Order it as is — no customization needed.
+                        </p>
+
+                        <!-- Order Form -->
+                        <form id="orderForm" class="space-y-3">
+                        <input type="text" name="name" placeholder="Your Name" required class="w-full border rounded-lg px-4 py-2" />
+                        <input type="email" name="email" placeholder="Email Address" required class="w-full border rounded-lg px-4 py-2" />
+                        <input type="tel" name="phone" placeholder="Phone Number" required class="w-full border rounded-lg px-4 py-2" />
+
+                        <button type="submit"
+                                class="w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-600 transition">
+                            Place Order
+                        </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Repeat for more cards -->
+        <div class="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition duration-300">
+            <div class="overflow-hidden">
+                <img src="resources/painting/painting-2.jpg" alt="Art 2" class="w-full h-64 object-contain transform hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800">Golden Waves</h3>
+                <p class="text-pink-600 font-bold mt-1">₹4,199</p>
+                <!-- Buy Now Button (inside card) -->
+                <button onclick="openModal('Serenity in Blue', '₹3,499', 'resources/painting/painting-2.jpg')" 
+                    class="mt-4 w-full bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-600 transition">
+                    Buy Now
+                </button>
+
+                <!-- Modal Overlay -->
+                <div id="artModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+                    <div class="bg-white rounded-2xl shadow-lg w-[90%] sm:w-[500px] p-6 relative modal-scroll-769">
+                    
+                        <!-- Close Button -->
+                        <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black text-xl">&times;</button>
+
+                        <!-- Image -->
+                        <img id="modalImg" src="resources/painting/painting-2.jpg" alt="Artwork" class="w-full h-64 object-contain rounded-xl mb-4">
+
+                        <!-- Title & Price -->
+                        <h2 id="modalTitle" class="text-2xl font-bold text-gray-800"></h2>
+                        <p id="modalPrice" class="text-pink-600 font-semibold mb-4"></p>
+
+                        <!-- Short Description -->
+                        <p class="text-gray-600 text-sm mb-4">
+                        This is a beautifully crafted artwork perfect for your space. Order it as is — no customization needed.
+                        </p>
+
+                        <!-- Order Form -->
+                        <form id="orderForm" class="space-y-3">
+                        <input type="text" name="name" placeholder="Your Name" required class="w-full border rounded-lg px-4 py-2" />
+                        <input type="email" name="email" placeholder="Email Address" required class="w-full border rounded-lg px-4 py-2" />
+                        <input type="tel" name="phone" placeholder="Phone Number" required class="w-full border rounded-lg px-4 py-2" />
+
+                        <button type="submit"
+                                class="w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-600 transition">
+                            Place Order
+                        </button>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <!-- Repeat for more cards -->
+        <div class="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition duration-300">
+            <div class="overflow-hidden">
+                <img src="resources/painting/painting-3.jpg" alt="Art 2" class="w-full h-64 object-contain transform hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800">Golden Waves</h3>
+                <p class="text-pink-600 font-bold mt-1">₹4,199</p>
+                <!-- Buy Now Button (inside card) -->
+                <button onclick="openModal('Serenity in Blue', '₹3,499', 'resources/painting/painting-3.jpg')" 
+                    class="mt-4 w-full bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-600 transition">
+                    Buy Now
+                </button>
+
+                <!-- Modal Overlay -->
+                <div id="artModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+                    <div class="bg-white rounded-2xl shadow-lg w-[90%] sm:w-[500px] p-6 relative modal-scroll-769">
+                    
+                        <!-- Close Button -->
+                        <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black text-xl">&times;</button>
+
+                        <!-- Image -->
+                        <img id="modalImg" src="resources/painting/painting-3.jpg" alt="Artwork" class="w-full h-64 object-contain rounded-xl mb-4">
+
+                        <!-- Title & Price -->
+                        <h2 id="modalTitle" class="text-2xl font-bold text-gray-800"></h2>
+                        <p id="modalPrice" class="text-pink-600 font-semibold mb-4"></p>
+
+                        <!-- Short Description -->
+                        <p class="text-gray-600 text-sm mb-4">
+                        This is a beautifully crafted artwork perfect for your space. Order it as is — no customization needed.
+                        </p>
+
+                        <!-- Order Form -->
+                        <form id="orderForm" class="space-y-3">
+                        <input type="text" name="name" placeholder="Your Name" required class="w-full border rounded-lg px-4 py-2" />
+                        <input type="email" name="email" placeholder="Email Address" required class="w-full border rounded-lg px-4 py-2" />
+                        <input type="tel" name="phone" placeholder="Phone Number" required class="w-full border rounded-lg px-4 py-2" />
+
+                        <button type="submit"
+                                class="w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-600 transition">
+                            Place Order
+                        </button>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-gray-900 text-gray-300 px-6 py-12">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+
+    <!-- Brand -->
+    <div>
+      <h2 class="text-2xl font-bold text-white mb-3">Textures By Shifa</h2>
+      <p class="text-sm leading-relaxed">
+        Unique handmade paintings and textures that add soul to your space.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html" class="hover:text-white">Home</a></li>
+        <li><a href="#shop" class="hover:text-white">Shop</a></li>
+        <li><a href="#customize" class="hover:text-white">Customize</a></li>
+        <li><a href="#about" class="hover:text-white">About</a></li>
+        <li><a href="#contact" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+      <p class="text-sm mb-4">Email: <a href="mailto:texturesbyshifa@gmail.com" class="hover:text-white">texturesbyshifa@gmail.com</a></p>
+      <p class="text-sm mb-4">Phone: <a href="tel:+91XXXXXXXXXX" class="hover:text-white">+91 XXXXX-XXXXX</a></p>
+      <p class="text-sm mb-4">Location: India</p>
+    </div>
+
+    <!-- Newsletter / Socials -->
+    <div>
+      <h3 class="text-lg font-semibold text-white mb-4">Stay Connected</h3>
+      <div class="flex space-x-4 mb-4">
+        <a href="#" class="hover:text-white">
+          <svg class="w-7 h-7" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320.3 205C256.8 204.8 205.2 256.2 205 319.7C204.8 383.2 256.2 434.8 319.7 435C383.2 435.2 434.8 383.8 435 320.3C435.2 256.8 383.8 205.2 320.3 205zM319.7 245.4C360.9 245.2 394.4 278.5 394.6 319.7C394.8 360.9 361.5 394.4 320.3 394.6C279.1 394.8 245.6 361.5 245.4 320.3C245.2 279.1 278.5 245.6 319.7 245.4zM413.1 200.3C413.1 185.5 425.1 173.5 439.9 173.5C454.7 173.5 466.7 185.5 466.7 200.3C466.7 215.1 454.7 227.1 439.9 227.1C425.1 227.1 413.1 215.1 413.1 200.3zM542.8 227.5C541.1 191.6 532.9 159.8 506.6 133.6C480.4 107.4 448.6 99.2 412.7 97.4C375.7 95.3 264.8 95.3 227.8 97.4C192 99.1 160.2 107.3 133.9 133.5C107.6 159.7 99.5 191.5 97.7 227.4C95.6 264.4 95.6 375.3 97.7 412.3C99.4 448.2 107.6 480 133.9 506.2C160.2 532.4 191.9 540.6 227.8 542.4C264.8 544.5 375.7 544.5 412.7 542.4C448.6 540.7 480.4 532.5 506.6 506.2C532.8 480 541 448.2 542.8 412.3C544.9 375.3 544.9 264.5 542.8 227.5zM495 452C487.2 471.6 472.1 486.7 452.4 494.6C422.9 506.3 352.9 503.6 320.3 503.6C287.7 503.6 217.6 506.2 188.2 494.6C168.6 486.8 153.5 471.7 145.6 452C133.9 422.5 136.6 352.5 136.6 319.9C136.6 287.3 134 217.2 145.6 187.8C153.4 168.2 168.5 153.1 188.2 145.2C217.7 133.5 287.7 136.2 320.3 136.2C352.9 136.2 423 133.6 452.4 145.2C472 153 487.1 168.1 495 187.8C506.7 217.3 504 287.3 504 319.9C504 352.5 506.7 422.6 495 452z"/></svg>
+        </a>
+        <!-- Add more icons here -->
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+    &copy; 2025 Textures By Shifa. All rights reserved.
+  </div>
+</footer>
+
+<!-- ✅ Success Modal -->
+<div id="successModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-[9999] hidden transition-all duration-300 scale-95 opacity-0" style="margin: -200px;">
+  <div class="bg-white rounded-2xl p-6 text-center shadow-xl w-80 transform transition-all duration-500 scale-95 opacity-0 animate-fade-in">
+    <div class="text-green-500 text-5xl mb-2 animate-bounce">✅</div>
+    <h2 class="text-xl font-semibold mb-2">Order Placed!</h2>
+    <p class="text-gray-600 mb-4">We’ve received your order and will contact you shortly.</p>
+    <button onclick="closeSuccessModal()"
+      class="mt-2 bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition">
+      Close
+    </button>
+  </div>
+</div>
+
+
+</body>
+<script>
+     const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    const slides = document.querySelectorAll(".carousel-image");
+  let currentSlide_hero = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("opacity-100");
+      slide.classList.add("opacity-0");
+      if (i === index) {
+        slide.classList.remove("opacity-0");
+        slide.classList.add("opacity-100");
+      }
+    });
+  }
+
+  // Auto slide every 5 seconds
+  setInterval(() => {
+    currentSlide_hero = (currentSlide_hero + 1) % slides.length;
+    showSlide(currentSlide_hero);
+  }, 3000);
+
+
+
+  let currentSlide = 0;
+  let slideImgs = [];
+
+  function openModal(title, price, ...images) {
+    document.getElementById('artModal').classList.remove('hidden');
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalPrice').innerText = price;
+
+    // Load images into carousel
+    slideImgs = images;
+    currentSlide = 0;
+    updateCarousel();
+  }
+
+  function updateCarousel() {
+    const imgElements = [
+      document.getElementById('carouselImg1'),
+      document.getElementById('carouselImg2'),
+      document.getElementById('carouselImg3'),
+      document.getElementById('carouselImg4')
+    ];
+
+    imgElements.forEach((el, idx) => {
+      el.src = slideImgs[idx] || '';
+      el.classList.toggle('opacity-100', idx === currentSlide);
+      el.classList.toggle('opacity-0', idx !== currentSlide);
+    });
+  }
+
+  function nextSlide() {
+    if (slideImgs.length === 0) return;
+    currentSlide = (currentSlide + 1) % slideImgs.length;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    if (slideImgs.length === 0) return;
+    currentSlide = (currentSlide - 1 + slideImgs.length) % slideImgs.length;
+    updateCarousel();
+  }
+
+  function closeModal() {
+    document.getElementById('artModal').classList.add('hidden');
+  }
+
+  document.getElementById('artModal').addEventListener('click', function (e) {
+    if (e.target.id === 'artModal') closeModal();
+  });
+
+  function showSuccessModal() {
+    const modal = document.getElementById("successModal");
+    modal.classList.remove("hidden");
+
+    // Animate modal in using opacity/scale
+    const box = modal.querySelector("div");
+    box.classList.remove("scale-95", "opacity-0");
+    box.classList.add("scale-100", "opacity-100");
+
+    // Ensure modal is fully visible
+    modal.classList.add("opacity-100");
+    modal.classList.remove("opacity-0");
+  }
+
+  function closeSuccessModal() {
+    const modal = document.getElementById("successModal");
+    const box = modal.querySelector("div");
+
+    // Animate modal out using opacity/scale
+    box.classList.add("scale-95", "opacity-0");
+    box.classList.remove("scale-100", "opacity-100");
+
+    // Delay hiding to allow animation to complete
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      modal.classList.remove("opacity-100");
+      modal.classList.add("opacity-0");
+    }, 300); // matches duration-300
+  }
+
+  document.getElementById('orderForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const submitBtn = this.querySelector('button[type="submit"]');
+    if (submitBtn.disabled) return; // Prevent double submit
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<svg class="animate-spin h-5 w-5 mr-2 inline-block text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path></svg>Submitting...`;
+
+    // Get form values
+    const name = this.elements['name'].value;
+    const email = this.elements['email'].value;
+    const phone = this.elements['phone'].value;
+    // Get artwork title from modal
+    const styleName = document.getElementById('modalTitle').innerText;
+    // Set default size and quantity
+    const size = 'Standard';
+    const quantity = 1;
+
+    // Prepare data for backend
+    const data = {
+      customerName: name,
+      customerEmail: email,
+      styleName,
+      size,
+      quantity
+    };
+
+    fetch('https://textures-by-shifa-backend.onrender.com/api/order/style', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(result => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Place Order';
+      if (result && result.message) {
+        closeModal();
+        document.getElementById('orderForm').reset();
+        setTimeout(() => {
+          showSuccessModal();
+        }, 350); // Wait for modal to close/animate
+      } else {
+        alert('❌ Submission failed: ' + (result.message || 'Unknown error'));
+      }
+    })
+    .catch(err => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Place Order';
+      alert('⚠️ Something went wrong. Try again.');
+      console.error(err);
+    });
+  });
+</script>
+
+    
+  
+</html>
